@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const SiteLayout = () => {
   return (
@@ -10,6 +11,7 @@ const SiteLayout = () => {
         <Outlet />
       </main>
       <SiteFooter />
+      <ScrollToTop />
     </div>
   );
 };

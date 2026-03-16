@@ -7,14 +7,14 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
       fontFamily: {
-        sans: ['"IBM Plex Sans"', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -56,15 +56,16 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
         card: "12px",
-        button: "8px",
+        button: "6px",
       },
       boxShadow: {
-        subtle: "0 0 0 1px rgba(0,0,0,.04), 0 2px 4px rgba(0,0,0,.02), 0 8px 16px rgba(0,0,0,.04)",
-        "card-hover": "0 0 0 1px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06), 0 16px 32px rgba(0,0,0,.08)",
+        subtle: "0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04)",
+        "card-hover": "0 4px 16px rgba(0,0,0,.08), 0 8px 32px rgba(0,0,0,.06)",
+        hero: "0 8px 40px rgba(248,163,43,.15)",
       },
       fontSize: {
-        hero: ["clamp(2.5rem, 5vw, 4rem)", { lineHeight: "1.1", fontWeight: "700" }],
-        section: ["2rem", { lineHeight: "1.2", fontWeight: "700" }],
+        hero: ["clamp(2.25rem, 5vw, 3.5rem)", { lineHeight: "1.1", fontWeight: "800" }],
+        section: ["clamp(1.75rem, 3vw, 2.5rem)", { lineHeight: "1.15", fontWeight: "800" }],
       },
       keyframes: {
         "accordion-down": {
@@ -75,10 +76,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-up": "fade-up 0.5s ease-out forwards",
       },
     },
   },

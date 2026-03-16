@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Wrench, Settings, Droplets, Cog, Zap, Thermometer, Car, Wind, Snowflake, CalendarCheck } from "lucide-react";
+import { Wrench, Settings, Droplets, Cog, Zap, Thermometer, Car, Wind, Snowflake, CalendarCheck, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -28,16 +28,20 @@ const fadeUp = {
 const ServicesPage = () => {
   return (
     <>
-      <section className="py-16 lg:py-20">
-        <div className="container">
-          <div className="text-center mb-14">
-            <p className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">Complete Automotive Care</p>
-            <h1 className="text-hero mb-4">Our Services</h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              From routine maintenance to complex repairs, we have the expertise and equipment to handle all your automotive needs.
-            </p>
-          </div>
+      {/* Hero */}
+      <section className="bg-foreground py-16 lg:py-20">
+        <div className="container text-center">
+          <p className="text-sm font-bold text-primary uppercase tracking-wider mb-2">Complete Automotive Care</p>
+          <h1 className="text-hero text-background mb-4">Our Services</h1>
+          <p className="text-background/70 text-lg max-w-2xl mx-auto">
+            From routine maintenance to complex repairs, our automotive repair technicians will get your vehicle back on the road fast.
+          </p>
+        </div>
+      </section>
 
+      {/* Services Grid */}
+      <section className="py-20">
+        <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
               <motion.div
@@ -48,22 +52,34 @@ const ServicesPage = () => {
                 custom={i}
                 variants={fadeUp}
                 whileHover={{ y: -4 }}
-                className="bg-card rounded-card p-6 shadow-subtle hover:shadow-card-hover transition-shadow duration-200"
+                className="bg-card rounded-card p-6 shadow-subtle hover:shadow-card-hover transition-shadow duration-200 border border-border/50"
               >
-                <div className="w-12 h-12 rounded-button bg-secondary/10 flex items-center justify-center mb-4">
-                  <service.icon className="h-6 w-6 text-secondary" />
+                <div className="w-12 h-12 rounded-button bg-primary/10 flex items-center justify-center mb-4">
+                  <service.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{service.name}</h3>
-                <p className="text-muted-foreground text-base">{service.desc}</p>
+                <h3 className="text-lg font-bold mb-2">{service.name}</h3>
+                <p className="text-muted-foreground text-sm">{service.desc}</p>
               </motion.div>
             ))}
           </div>
 
-          <div className="text-center mt-14">
-            <p className="text-muted-foreground mb-4">Need a specific service not listed here?</p>
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">Get Quote</Link>
-            </Button>
+          {/* CTA */}
+          <div className="mt-16 bg-secondary rounded-card p-10 text-center">
+            <h2 className="text-section text-secondary-foreground mb-4">Need a Specific Service?</h2>
+            <p className="text-secondary-foreground/80 mb-6 max-w-lg mx-auto">
+              Give us a call for an estimate or to get additional information about our services.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button variant="hero" size="lg" asChild>
+                <a href="tel:6048798555">
+                  <Phone className="h-5 w-5" />
+                  Call (604) 879-8555
+                </a>
+              </Button>
+              <Button variant="cta" size="lg" className="bg-background text-foreground hover:bg-background/90" asChild>
+                <Link to="/contact">Get an Estimate</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
