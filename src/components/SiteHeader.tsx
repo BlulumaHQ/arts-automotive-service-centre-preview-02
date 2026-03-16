@@ -27,9 +27,9 @@ const SiteHeader = () => {
         </div>
       </div>
 
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex items-center justify-between py-3">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Art's Automotive Service Centre" className="h-[80px] w-auto" />
+          <img src={logo} alt="Art's Automotive Service Centre" className="h-[75px] w-auto" />
         </Link>
 
         {/* Desktop Nav */}
