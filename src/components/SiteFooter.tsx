@@ -30,7 +30,7 @@ const SiteFooter = () => {
           <div className="flex flex-col md:flex-row justify-between gap-8">
             {/* Left: Logo */}
             <div className="md:max-w-xs">
-              <img src={logo} alt="Art's Automotive Service Centre" className="h-14 w-auto mb-4 brightness-[2]" />
+              <h3 className="text-xl font-bold text-background mb-4 uppercase tracking-wide">Art's Automotive Service Centre</h3>
               <p className="text-sm text-background/60">
                 Good & honest auto repair in Vancouver for over 28 years.
               </p>
