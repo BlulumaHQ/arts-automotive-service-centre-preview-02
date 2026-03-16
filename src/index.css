@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,37 +7,38 @@
 @layer base {
   :root {
     --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
+    --foreground: 220 30% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 220 30% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 220 30% 15%;
 
-    --primary: 32 100% 58%;
+    --primary: 35 94% 57%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 233 78% 59%;
+    --secondary: 222 93% 57%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 35 94% 95%;
+    --accent-foreground: 220 30% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 233 78% 59%;
+    --ring: 222 93% 57%;
 
     --radius: 0.5rem;
 
-    --shadow-subtle: 0 0 0 1px rgba(0,0,0,.04), 0 2px 4px rgba(0,0,0,.02), 0 8px 16px rgba(0,0,0,.04);
-    --shadow-hover: 0 0 0 1px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.06), 0 16px 32px rgba(0,0,0,.08);
+    --shadow-subtle: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-hover: 0 4px 16px rgba(0,0,0,.08), 0 8px 32px rgba(0,0,0,.06);
+    --shadow-hero: 0 8px 40px rgba(248,163,43,.15);
   }
 }
 
@@ -52,14 +53,12 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 700;
+    font-weight: 800;
     text-wrap: balance;
     color: hsl(var(--foreground));
   }
@@ -76,8 +75,14 @@
   .shadow-card-hover {
     box-shadow: var(--shadow-hover);
   }
+  .shadow-hero {
+    box-shadow: var(--shadow-hero);
+  }
   .glass-nav {
-    backdrop-filter: blur(12px);
-    background-color: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(16px);
+    background-color: hsla(0, 0%, 100%, 0.92);
+  }
+  .section-alt {
+    background-color: hsl(var(--muted));
   }
 }

@@ -7,7 +7,6 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { label: "Home", to: "/" },
   { label: "Services", to: "/services" },
-  { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
@@ -17,9 +16,20 @@ const SiteHeader = () => {
 
   return (
     <header className="sticky top-0 z-50 glass-nav border-b border-border/50">
+      {/* Top bar */}
+      <div className="bg-secondary text-secondary-foreground">
+        <div className="container flex items-center justify-between py-1.5 text-xs font-medium">
+          <span>675 Clark Drive, Vancouver, BC V5L 3H9</span>
+          <a href="tel:6048798555" className="flex items-center gap-1 hover:text-primary transition-colors">
+            <Phone className="h-3 w-3" />
+            (604) 879-8555
+          </a>
+        </div>
+      </div>
+
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Art's Auto" className="h-10 w-auto" />
+          <img src={logo} alt="Art's Automotive Service Centre" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
@@ -28,7 +38,7 @@ const SiteHeader = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
+              className={`text-sm font-bold uppercase tracking-wide transition-colors hover:text-primary ${
                 location.pathname === link.to ? "text-primary" : "text-foreground/80"
               }`}
             >
@@ -36,9 +46,9 @@ const SiteHeader = () => {
             </Link>
           ))}
           <Button variant="hero" size="default" asChild>
-            <a href="tel:2045868347">
+            <a href="tel:6048798555">
               <Phone className="h-4 w-4" />
-              (204) 586-8347
+              Call Now
             </a>
           </Button>
         </nav>
@@ -46,9 +56,9 @@ const SiteHeader = () => {
         {/* Mobile toggle */}
         <div className="flex md:hidden items-center gap-3">
           <Button variant="hero" size="sm" asChild>
-            <a href="tel:2045868347">
+            <a href="tel:6048798555">
               <Phone className="h-4 w-4" />
-              Call Now
+              Call
             </a>
           </Button>
           <button
@@ -70,7 +80,7 @@ const SiteHeader = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setMobileOpen(false)}
-                className={`py-3 px-4 rounded-button text-base font-medium transition-colors ${
+                className={`py-3 px-4 rounded-button text-base font-bold transition-colors ${
                   location.pathname === link.to
                     ? "bg-primary/10 text-primary"
                     : "text-foreground/80 hover:bg-muted"
