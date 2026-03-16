@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin } from "lucide-react";
-import logo from "@/assets/logo.png";
+
 
 const SiteFooter = () => {
   return (
