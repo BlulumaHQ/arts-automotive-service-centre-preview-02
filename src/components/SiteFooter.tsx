@@ -63,9 +63,9 @@ const SiteFooter = () => {
           {/* Copyright bar */}
           <div className="border-t border-background/10 mt-8 pt-6 text-center">
             <p className="text-xs text-background/40">
-              © {new Date().getFullYear()} Art's Automotive Service Centre. All rights reserved. | Website Launch by{" "}
-              <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                SwiftLift
+              © {new Date().getFullYear()} Art's Automotive Service Centre | Web Design by{" "}
+              <a href="https://sonykundesign.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                Sonykun Design
               </a>
             </p>
           </div>
