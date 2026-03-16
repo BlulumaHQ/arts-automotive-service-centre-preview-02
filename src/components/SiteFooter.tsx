@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin } from "lucide-react";
-import logo from "@/assets/logo.png";
+
 
 const SiteFooter = () => {
   return (
@@ -30,7 +30,7 @@ const SiteFooter = () => {
           <div className="flex flex-col md:flex-row justify-between gap-8">
             {/* Left: Logo */}
             <div className="md:max-w-xs">
-              <img src={logo} alt="Art's Automotive Service Centre" className="h-14 w-auto mb-4 brightness-[2]" />
+              <h3 className="text-xl font-bold text-background mb-4 uppercase tracking-wide">Art's Automotive Service Centre</h3>
               <p className="text-sm text-background/60">
                 Good & honest auto repair in Vancouver for over 28 years.
               </p>
@@ -63,9 +63,9 @@ const SiteFooter = () => {
           {/* Copyright bar */}
           <div className="border-t border-background/10 mt-8 pt-6 text-center">
             <p className="text-xs text-background/40">
-              © {new Date().getFullYear()} Art's Automotive Service Centre. All rights reserved. | Website Launch by{" "}
-              <a href="https://swiftlift.app" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
-                SwiftLift
+              © {new Date().getFullYear()} Art's Automotive Service Centre | Web Design by{" "}
+              <a href="https://sonykundesign.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                Sonykun Design
               </a>
             </p>
           </div>
