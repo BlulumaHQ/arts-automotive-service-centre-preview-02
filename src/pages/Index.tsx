@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Shield, Clock, Wrench, Star, ChevronRight, Award, Settings, Droplets, Cog, Zap, Thermometer } from "lucide-react";
+import { Phone, Shield, Clock, Wrench, Star, ChevronRight, Award, Settings, Droplets, Cog, Zap, Thermometer, Send } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import heroImage from "@/assets/hero-auto.jpg";
 import shopPhoto from "@/assets/shop-photo.png";
 import bccaaBadge from "@/assets/bccaa-badge.jpg";
