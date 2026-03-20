@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, Shield, Clock, Wrench, Star, ChevronRight, Award, Settings, Droplets, Cog, Zap, Thermometer } from "lucide-react";
+import { Phone, Shield, Clock, Wrench, Star, ChevronRight, Award, Settings, Droplets, Cog, Zap, Thermometer, Send } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import heroImage from "@/assets/hero-auto.jpg";
 import shopPhoto from "@/assets/shop-photo.png";
 import bccaaBadge from "@/assets/bccaa-badge.jpg";
@@ -24,6 +28,51 @@ const services = [
   { icon: Thermometer, name: "Cooling System", desc: "Radiator and cooling system maintenance" },
 ];
 
+const HeroContactForm = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    try {
+      const res = await fetch("https://formspree.io/f/mbdabbql", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        toast({ title: "Message sent!", description: "We'll get back to you shortly." });
+        form.reset();
+      } else {
+        toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="bg-card/95 backdrop-blur-sm rounded-card p-6 md:p-8 shadow-subtle border border-border/30">
+      <h3 className="text-xl font-bold text-foreground mb-1">Request an Estimate</h3>
+      <p className="text-muted-foreground text-sm mb-5">Fill out the form and we'll get back to you quickly.</p>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input name="name" placeholder="Your Name" required className="bg-background" />
+        <Input name="email" type="email" placeholder="Email Address" required className="bg-background" />
+        <Input name="phone" type="tel" placeholder="Phone Number" className="bg-background" />
+        <Textarea name="message" placeholder="Describe your vehicle issue..." rows={3} required className="bg-background resize-none" />
+        <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+          <Send className="h-4 w-4" />
+          {isSubmitting ? "Sending..." : "Send Request"}
+        </Button>
+      </form>
+    </div>
+  );
+};
+
 const HomePage = () => {
   return (
     <>
@@ -36,7 +85,8 @@ const HomePage = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
         <div className="container relative z-20 py-20 lg:py-28">
-          <div className="max-w-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left — Text */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -63,6 +113,15 @@ const HomePage = () => {
                   <Link to="/contact">Get an Estimate</Link>
                 </Button>
               </motion.div>
+            </motion.div>
+
+            {/* Right — Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <HeroContactForm />
             </motion.div>
           </div>
         </div>
