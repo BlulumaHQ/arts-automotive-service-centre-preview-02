@@ -40,7 +40,8 @@ const HomePage = () => {
           className="absolute inset-0 w-full h-full object-cover opacity-40"
         />
         <div className="container relative z-20 py-20 lg:py-28">
-          <div className="max-w-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left — Text */}
             <motion.div
               initial="hidden"
               animate="visible"
@@ -67,6 +68,15 @@ const HomePage = () => {
                   <Link to="/contact">Get an Estimate</Link>
                 </Button>
               </motion.div>
+            </motion.div>
+
+            {/* Right — Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <HeroContactForm />
             </motion.div>
           </div>
         </div>
