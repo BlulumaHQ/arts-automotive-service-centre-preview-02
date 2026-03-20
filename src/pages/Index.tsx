@@ -28,6 +28,51 @@ const services = [
   { icon: Thermometer, name: "Cooling System", desc: "Radiator and cooling system maintenance" },
 ];
 
+const HeroContactForm = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    try {
+      const res = await fetch("https://formspree.io/f/mbdabbql", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        toast({ title: "Message sent!", description: "We'll get back to you shortly." });
+        form.reset();
+      } else {
+        toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="bg-card/95 backdrop-blur-sm rounded-card p-6 md:p-8 shadow-subtle border border-border/30">
+      <h3 className="text-xl font-bold text-foreground mb-1">Request an Estimate</h3>
+      <p className="text-muted-foreground text-sm mb-5">Fill out the form and we'll get back to you quickly.</p>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <Input name="name" placeholder="Your Name" required className="bg-background" />
+        <Input name="email" type="email" placeholder="Email Address" required className="bg-background" />
+        <Input name="phone" type="tel" placeholder="Phone Number" className="bg-background" />
+        <Textarea name="message" placeholder="Describe your vehicle issue..." rows={3} required className="bg-background resize-none" />
+        <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+          <Send className="h-4 w-4" />
+          {isSubmitting ? "Sending..." : "Send Request"}
+        </Button>
+      </form>
+    </div>
+  );
+};
+
 const HomePage = () => {
   return (
     <>
